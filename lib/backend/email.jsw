@@ -28,7 +28,7 @@ export function sendMessageReceivedEmail(senderName, senderEmail, recipientName,
 function sendWithService(senderName, senderEmail, recipientName, recipientEmail, message) {
 	return new Promise((resolve, reject) => {
 		const url = "https://api.sendgrid.com/v3/mail/send";
-		const key = "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";
+		const key = "xxx";
 
 		const headers = {
 			"Authorization": "Bearer " + key,
