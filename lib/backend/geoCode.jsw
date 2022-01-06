@@ -1,0 +1,54 @@
+// Filename: backend/geoCode.jsw (web modules need to have a .jsw extension)
+
+import {
+	fetch
+}
+from 'wix-fetch';
+
+export function getLatLong(address) {
+	let googleGeoUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+	let googleAPIKey = "AIzaSyDOMsz_q6uERbYh7Skrr7KxsE4vy02wvDA";
+
+	// Create the full url to execute
+	let geoUrl = googleGeoUrl + address + "&key=" + googleAPIKey;
+	
+	console.log(geoUrl);
+
+	// variables for the return
+	var latlong = {};
+
+	return fetch(geoUrl, {
+			method: 'get'
+		}, 20000)
+		.then((httpResponse) => {
+			if (httpResponse.ok) {
+				return httpResponse.json();
+			}
+		})
+		.then((json) => {
+			latlong = {
+				"lat": json.results[0].geometry.location.lat,
+				"long": json.results[0].geometry.location.lng
+			}
+			return latlong;
+
+		});
+}
+
+//Use the following code in one of your site's front-end files
+//to call the multiply function from backend/geoCode.jsw.
+
+/* 
+import {getLatLong} from 'backend/geoCode';
+
+$w.onReady(function () {
+	
+	getLatLong("Stationsstrasse 1, 8003 Zürich, Schweiz").then(latlong => {
+	    console.log(latlong);
+	      
+	})
+	.catch(error => {
+		console.log(error);
+	});
+});
+*/
