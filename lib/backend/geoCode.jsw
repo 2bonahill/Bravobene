@@ -7,7 +7,7 @@ from 'wix-fetch';
 
 export function getLatLong(address) {
 	let googleGeoUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-	let googleAPIKey = "AIzaSyDOMsz_q6uERbYh7Skrr7KxsE4vy02wvDA";
+	let googleAPIKey = "xxx";
 
 	// Create the full url to execute
 	let geoUrl = googleGeoUrl + address + "&key=" + googleAPIKey;
