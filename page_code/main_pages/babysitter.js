@@ -1,4 +1,3 @@
-// For full API documentation, including code examples, visit http://wix.to/94BuAAs
 import wixData from 'wix-data';
 import {
 	bravobeneLogin
